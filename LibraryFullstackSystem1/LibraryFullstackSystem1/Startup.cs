@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using LibraryFullstackSystem1.Data;
 using Microsoft.EntityFrameworkCore;
+using LibraryFullstackSystem1.Services;
 
 namespace LibraryFullstackSystem1
 {
@@ -21,8 +22,14 @@ namespace LibraryFullstackSystem1
         {
             services.AddMvc();
 
+            services.AddSingleton(Configuration);
+
+            services.AddScoped<ILibraryAsset, LibraryAssetService>();
+
             services.AddDbContext<LibradyFullstackSystemDbContext>(options =>
                                 options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

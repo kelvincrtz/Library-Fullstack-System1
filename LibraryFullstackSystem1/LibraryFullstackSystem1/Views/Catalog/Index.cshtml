@@ -1,0 +1,31 @@
+﻿@model LibraryFullstackSystem1.Models.Catalog.AssetIndexModel
+
+<div class="body-content">
+    <h3>Library Catalog</h3>
+    <table class="table table-condensed">
+        <thead class="">
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Author/Director</th>
+                <th>Dewey Call Number</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach (var asset in Model.Assets)
+            {
+               <tr>
+                   <td class="img-thumbnail">
+                       <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@asset.Id">
+                           <img src=@asset.ImageUrl class="">
+                       </a>
+                   </td>
+                   <td>@asset.Title</td>
+                   <td>@asset.AuthorOrDirector</td>
+                   <td>@asset.DeweyCallNumber</td>
+               </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
