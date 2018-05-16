@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LibraryFullstackSystem1.Data.Model
 {
-    public class LibraryAsset
+    public abstract class LibraryAsset
     {
         [Required]
         public int Id { get; set; }

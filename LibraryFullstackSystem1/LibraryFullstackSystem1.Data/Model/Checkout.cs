@@ -5,14 +5,18 @@ using System.Text;
 
 namespace LibraryFullstackSystem1.Data.Model
 {
-    public class Status
+    public class Checkout
     {
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public LibraryAsset LibraryAsset { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public LibraryCard LibraryCard { get; set; }
+
+        public DateTime Since { get; set; }
+
+        public DateTime Until { get; set; }
+
     }
 }

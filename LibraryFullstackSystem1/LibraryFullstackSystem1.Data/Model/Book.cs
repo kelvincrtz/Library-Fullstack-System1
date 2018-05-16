@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace LibraryFullstackSystem1.Data.Model
 {
-    class Book
+    public class Book
     {
+        [Required]
+        public string ISBN { get; set; }
+
+        [Required]
+        public string Author { get; set; }
+
+        [Required]
+        public string DeweyIndex { get; set; }
     }
 }
