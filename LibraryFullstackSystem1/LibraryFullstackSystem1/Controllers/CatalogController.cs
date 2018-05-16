@@ -37,5 +37,27 @@ namespace LibraryFullstackSystem1.Controllers
 
             return View(model);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var asset = _ILibraryAsset.GetById(id);
+
+            var model = new AssetDetailModel()
+            {
+                AssetId = id,
+                Title = asset.Title,
+                AuthorOrDirector = _ILibraryAsset.GetAuthorOrDirector(id),
+                Type = _ILibraryAsset.GetType(id),
+                Year = asset.Year,
+                ISBN = _ILibraryAsset.GetIsbn(id),
+                DeweyCallNumber = _ILibraryAsset.GetDeweyIndex(id),
+                Status = asset.Status.Name,
+                Cost = asset.Cost,
+                CurrentLocation = _ILibraryAsset.GetCurrentLocation(id).Name,
+                ImageUrl = asset.ImageURL
+            };
+
+            return View(model);
+        }
     }
 }

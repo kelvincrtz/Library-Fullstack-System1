@@ -1,0 +1,23 @@
+﻿@model LibraryFullstackSystem1.Models.Catalog.AssetDetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="body-content">
+    <div class="page-header clearfix">
+        <h2>View Library Item</h2>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <h1 class="display-4">@Model.Title</h1>
+    <p class="lead">@Model.AuthorOrDirector</p>
+    <hr class="my-4">
+    <p>Cost: @Model.Cost</p>
+    <p>DewelCallNumber: @Model.DeweyCallNumber</p>
+    <p>Type: @Model.Type</p>
+    <p>Year: @Model.Year</p>
+    <p>Status: @Model.Status</p>
+
+</div>
+

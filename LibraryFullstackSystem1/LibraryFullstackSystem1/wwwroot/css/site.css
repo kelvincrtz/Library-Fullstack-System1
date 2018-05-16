@@ -1,4 +1,10 @@
-﻿body {
+﻿.imageSmall{
+    height:100px;
+    width:100px;
+    background-size:cover;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
