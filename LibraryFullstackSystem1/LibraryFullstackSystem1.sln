@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryFullstackSystem1", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryFullstackSystem1.Data", "LibraryFullstackSystem1.Data\LibraryFullstackSystem1.Data.csproj", "{DD64C3E1-6414-46E5-A237-F24691065850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryFullstackSystem1.Services", "LibraryFullstackSystem1.Services\LibraryFullstackSystem1.Services.csproj", "{DB57508B-0144-4572-959B-009039C61A6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DD64C3E1-6414-46E5-A237-F24691065850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD64C3E1-6414-46E5-A237-F24691065850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD64C3E1-6414-46E5-A237-F24691065850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB57508B-0144-4572-959B-009039C61A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB57508B-0144-4572-959B-009039C61A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB57508B-0144-4572-959B-009039C61A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB57508B-0144-4572-959B-009039C61A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
