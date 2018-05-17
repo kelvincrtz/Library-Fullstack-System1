@@ -143,7 +143,18 @@ namespace LibraryFullstackSystem1.Services
 
         public string GetCurrentHoldPatronName(int id)
         {
-            throw new NotImplementedException();
+            var item = _DbContext.Holds
+                .Include(p => p.LibraryAsset)
+                .Include(p => p.LibraryCard)
+                .FirstOrDefault(p => p.Id == id);
+
+            var cardId = item?.LibraryCard.Id;
+
+            var patronName = _DbContext.Patrons
+                .Include(p => p.LibraryCard)
+                .FirstOrDefault(p => p.LibraryCard.Id == cardId);
+
+            return patronName?.FirstName + " " + patronName?.LastName;
         }
 
         public DateTime GetCurrentHoldPlaced(int id)
