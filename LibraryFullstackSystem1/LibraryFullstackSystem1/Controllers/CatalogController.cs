@@ -67,7 +67,7 @@ namespace LibraryFullstackSystem1.Controllers
                 CheckoutHistory = _ICheckout.GetCheckoutHistories(id),
                 LatestCheckout = _ICheckout.GetLatestCheckout(id),
                 PatronName = _ICheckout.GetCurrentCheckoutPatron(id),
-                CurrentHolds = _ICheckout.
+                CurrentHolds = currentHolds
             };
 
             return View(model);
