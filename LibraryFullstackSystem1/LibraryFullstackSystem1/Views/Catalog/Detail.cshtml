@@ -31,5 +31,22 @@
     {
         <p><a class="btn btn-lg btn-primary" role="button" asp-controller="Catalog" asp-action="Found" asp-route-id="@Model.AssetId">Found</a></p>
     }
+
+    <div class="col-md-4">
+        <table>
+            <tr>
+                <td class="">ISBN: </td>
+                <td class="">@Model.ISBN</td>
+            </tr>
+            <tr>
+                <td class="">Call Number: </td>
+                <td class="">@Model.DeweyCallNumber</td>
+            </tr>
+            <tr>
+                <td class="">Replacement Cost: </td>
+                <td class="">@Model.Cost</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
