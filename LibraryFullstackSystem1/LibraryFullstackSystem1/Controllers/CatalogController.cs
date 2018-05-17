@@ -11,10 +11,12 @@ namespace LibraryFullstackSystem1.Controllers
     public class CatalogController : Controller
     {
         private readonly ILibraryAsset _ILibraryAsset;
+        private readonly ICheckout _ICheckout;
 
-        public CatalogController(ILibraryAsset LibraryAsset)
+        public CatalogController(ILibraryAsset LibraryAsset, ICheckout ICheckout)
         {
             _ILibraryAsset = LibraryAsset;
+            _ICheckout = ICheckout;
         }
 
         public IActionResult Index()
@@ -42,6 +44,13 @@ namespace LibraryFullstackSystem1.Controllers
         {
             var asset = _ILibraryAsset.GetById(id);
 
+            var currentHolds = _ICheckout.GetCurrentHolds(id)
+                .Select(result => new AssetHoldModel
+                {
+                    HoldPlaced = _ICheckout.GetCurrentHoldPlaced(result.Id).ToString("d"),
+                    PatronName = _ICheckout.GetCurrentHoldPatronName(result.Id),
+                });
+
             var model = new AssetDetailModel()
             {
                 AssetId = id,
@@ -54,7 +63,11 @@ namespace LibraryFullstackSystem1.Controllers
                 Status = asset.Status.Name,
                 Cost = asset.Cost,
                 CurrentLocation = _ILibraryAsset.GetCurrentLocation(id).Name,
-                ImageUrl = asset.ImageURL
+                ImageUrl = asset.ImageURL,
+                CheckoutHistory = _ICheckout.GetCheckoutHistories(id),
+                LatestCheckout = _ICheckout.GetLatestCheckout(id),
+                PatronName = _ICheckout.GetCurrentCheckoutPatron(id),
+                CurrentHolds = _ICheckout.
             };
 
             return View(model);

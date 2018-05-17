@@ -13,7 +13,10 @@
     <p>Cost: @Model.Cost</p>
     <p>DewelCallNumber: @Model.DeweyCallNumber</p>
     <p>Type: @Model.Type</p>
-    <p>Year: @Model.Year</p>
+    <p>Status: @Model.Status</p>
+    <p>Year: @Model.Year</p> 
+    <p>Location: @Model.CurrentLocation</p>
+
 
     @if (Model.Status == "Available")
     {
@@ -22,6 +25,7 @@
 
     @if (Model.Status == "Checked Out")
     {
+        <p>Checkout by: @Model.PatronName</p>
         <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Checkin" asp-route-id="@Model.AssetId">Check In</a></p>
         <p><a class="btn btn-lg btn-success" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Check Hold</a></p>
         <p><a class="btn btn-lg btn-default" role="button" asp-controller="Catalog" asp-action="Lost" asp-route-id="@Model.AssetId">Lost</a></p>
@@ -29,6 +33,7 @@
 
     @if (Model.Status == "Lost")
     {
+        <p>The item has been lost.</p>
         <p><a class="btn btn-lg btn-primary" role="button" asp-controller="Catalog" asp-action="Found" asp-route-id="@Model.AssetId">Found</a></p>
     }
 
@@ -47,6 +52,6 @@
                 <td class="">@Model.Cost</td>
             </tr>
         </table>
-    </div>
+    </div> 
 </div>
 

@@ -13,6 +13,7 @@ namespace LibraryFullstackSystem1.Data
         void CheckOutItem(int assetId, int libraryCardId);
         void CheckInItem(int assetId, int libraryCardId);
         IEnumerable<CheckoutHistory> GetCheckoutHistories(int id);
+        string GetCurrentCheckoutPatron(int assetId);
 
         void PlaceHold(int assetId, int libraryCardId);
         string GetCurrentHoldPatronName(int id);

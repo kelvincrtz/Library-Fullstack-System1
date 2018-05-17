@@ -159,7 +159,12 @@ namespace LibraryFullstackSystem1.Services
 
         public DateTime GetCurrentHoldPlaced(int id)
         {
-            throw new NotImplementedException();
+            return _DbContext.Holds
+                .Include(p => p.LibraryAsset)
+                .Include(p => p.LibraryCard)
+                .FirstOrDefault(p => p.Id == id)
+                .HoldPlaced;
+
         }
 
         public IEnumerable<Hold> GetCurrentHolds(int id)
@@ -254,6 +259,33 @@ namespace LibraryFullstackSystem1.Services
                 _DbContext.SaveChanges();
             }
      
+        }
+
+        public string GetCurrentCheckoutPatron(int assetId)
+        {
+            var checkout = GetCheckoutByAssetId(assetId);
+
+            if (checkout == null)
+            {
+                return "";
+            }
+            else
+            {
+                var cardId = checkout.LibraryCard.Id;
+                var patron = _DbContext.Patrons.Include(p => p.LibraryCard)
+                    .FirstOrDefault(p => p.LibraryCard.Id == cardId);
+
+                return patron.FirstName + " " + patron.LastName;
+            }
+
+        }
+
+        private Checkout GetCheckoutByAssetId(int assetId)
+        {
+            return _DbContext.Checkouts
+                .Include(p => p.LibraryAsset)
+                .Include(p => p.LibraryCard)
+                .FirstOrDefault(p => p.LibraryAsset.Id == assetId);
         }
     }
 }
