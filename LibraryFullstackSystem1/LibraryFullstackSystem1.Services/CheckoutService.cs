@@ -25,12 +25,56 @@ namespace LibraryFullstackSystem1.Services
 
         public void CheckInItem(int assetId, int libraryCardId)
         {
-            throw new NotImplementedException();
+            var now = DateTime.Now;
+
+            var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == libraryCardId);
+
+            //Remove any existing checkouts in the item
+            RemoveExistingCheckouts(assetId);
+
+            //Close any existing history
+            CloseExistingCheckoutHistory(assetId, now);
+
+            //Look for existing hold
+            var currentHold = _DbContext.Holds
+                         .Include(p => p.LibraryAsset)
+                         .Include(p => p.LibraryCard)
+                         .Where(p => p.LibraryAsset.Id == assetId);
+
+            //if Holds, checkout item to the earlist hold
+            if (currentHold.Any())
+            {
+                CheckoutToEarliestHold(assetId, currentHold);
+            }
+            else
+            {
+                // else mark item status to available
+                MarkItem(assetId, "Available");
+            }
+
+            _DbContext.SaveChanges();
+
+        }
+
+        public void CheckoutToEarliestHold(int assetId, IQueryable<Hold> currentHold)
+        {
+            var earlistHold = currentHold
+                .Include(p => p.LibraryCard)
+                .Include(p =>p.LibraryAsset)
+                .OrderBy(p => p.HoldPlaced).FirstOrDefault(p => p.LibraryAsset.Id == assetId);
+
+            var libraryCard = earlistHold.LibraryCard;
+
+            _DbContext.Remove(earlistHold);
+            _DbContext.SaveChanges();
+
+            CheckOutItem(assetId, libraryCard.Id);
+
         }
 
         public void CheckOutItem(int assetId, int libraryCardId)
         {
-            throw new NotImplementedException();
+            
         }
 
         public IEnumerable<Checkout> GetAll()
