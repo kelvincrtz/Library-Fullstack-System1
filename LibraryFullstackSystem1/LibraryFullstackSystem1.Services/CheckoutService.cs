@@ -60,7 +60,7 @@ namespace LibraryFullstackSystem1.Services
         {
             var earlistHold = currentHold
                 .Include(p => p.LibraryCard)
-                .Include(p =>p.LibraryAsset)
+                .Include(p => p.LibraryAsset)
                 .OrderBy(p => p.HoldPlaced).FirstOrDefault(p => p.LibraryAsset.Id == assetId);
 
             var libraryCard = earlistHold.LibraryCard;
@@ -74,7 +74,53 @@ namespace LibraryFullstackSystem1.Services
 
         public void CheckOutItem(int assetId, int libraryCardId)
         {
-            
+            var now = DateTime.Now;
+
+            if (IsCheckedOut(assetId))
+            {
+                return;
+            }
+            else
+            {
+                var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
+
+                MarkItem(assetId, "Checked Out");
+
+                var card = _DbContext.LibraryCards
+                    .Include(p => p.Checkouts)
+                    .FirstOrDefault(p => p.Id == libraryCardId);
+
+                var newCheckOut = new Checkout
+                {
+                    LibraryAsset = item,
+                    LibraryCard = card,
+                    Since = now,
+                    Until = GetDefaultCheckoutTime(now)
+                };
+
+                _DbContext.Add(newCheckOut);
+
+                var checkoutHistory = new CheckoutHistory
+                {
+                    CheckedOut = now,
+                    LibraryAsset = item,
+                    LibraryCard = card
+                };
+
+                _DbContext.Add(checkoutHistory);
+                _DbContext.SaveChanges();
+            }
+        }
+
+        private DateTime GetDefaultCheckoutTime(DateTime now)
+        {
+            return now.AddDays(30);
+        }
+    
+
+        public bool IsCheckedOut(int assetId)
+        {
+            return _DbContext.Checkouts.Where(p => p.LibraryAsset.Id == assetId).Any();
         }
 
         public IEnumerable<Checkout> GetAll()
@@ -175,7 +221,28 @@ namespace LibraryFullstackSystem1.Services
 
         public void PlaceHold(int assetId, int libraryCardId)
         {
-            throw new NotImplementedException();
+            var now = DateTime.Now;
+
+            var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
+
+            var card = _DbContext.LibraryCards.FirstOrDefault(p => p.Id == libraryCardId);
+
+            if (item.Status.Name == "Available")
+            {
+                MarkItem(assetId, "On Hold");
+
+                var newHold = new Hold
+                {  
+                    LibraryAsset = item,
+                    LibraryCard = card,
+                    Id = assetId,
+                    HoldPlaced = now
+                };
+
+                _DbContext.Add(newHold);
+                _DbContext.SaveChanges();
+            }
+     
         }
     }
 }
