@@ -1,7 +1,4 @@
 ﻿@model LibraryFullstackSystem1.Models.Catalog.AssetDetailModel
-@{
-    ViewData["Title"] = "Detail";
-}
 
 <div class="body-content">
     <div class="page-header clearfix">
@@ -17,7 +14,22 @@
     <p>DewelCallNumber: @Model.DeweyCallNumber</p>
     <p>Type: @Model.Type</p>
     <p>Year: @Model.Year</p>
-    <p>Status: @Model.Status</p>
 
+    @if (Model.Status == "Available")
+    {
+        <p><a class="btn btn-lg btn-default" role="button" asp-controller="Catalog" asp-action="Checkout" asp-route-id="@Model.AssetId">Check Out</a></p>
+    }
+
+    @if (Model.Status == "Checked Out")
+    {
+        <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Checkin" asp-route-id="@Model.AssetId">Check In</a></p>
+        <p><a class="btn btn-lg btn-success" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Check Hold</a></p>
+        <p><a class="btn btn-lg btn-default" role="button" asp-controller="Catalog" asp-action="Lost" asp-route-id="@Model.AssetId">Lost</a></p>
+    }
+
+    @if (Model.Status == "Lost")
+    {
+        <p><a class="btn btn-lg btn-primary" role="button" asp-controller="Catalog" asp-action="Found" asp-route-id="@Model.AssetId">Found</a></p>
+    }
 </div>
 
