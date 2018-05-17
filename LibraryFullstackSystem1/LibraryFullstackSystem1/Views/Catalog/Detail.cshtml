@@ -14,7 +14,7 @@
     <p>DewelCallNumber: @Model.DeweyCallNumber</p>
     <p>Type: @Model.Type</p>
     <p>Status: @Model.Status</p>
-    <p>Year: @Model.Year</p> 
+    <p>Year: @Model.Year</p>
     <p>Location: @Model.CurrentLocation</p>
 
 
@@ -37,7 +37,7 @@
         <p><a class="btn btn-lg btn-primary" role="button" asp-controller="Catalog" asp-action="Found" asp-route-id="@Model.AssetId">Found</a></p>
     }
 
-    <div class="col-md-4">
+    <div class="col">
         <table>
             <tr>
                 <td class="">ISBN: </td>
@@ -52,6 +52,52 @@
                 <td class="">@Model.Cost</td>
             </tr>
         </table>
-    </div> 
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Checkout History</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date Loaned</th>
+                        <th scope="col">Date Retured</th>
+                        <th scope="col">Card ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var checkoutHistory in Model.CheckoutHistory)
+                     {
+                        <tr>
+                            <td scope="row">@checkoutHistory.CheckedOut</td>
+                            <td scope="row">@checkoutHistory.CheckedIn</td>
+                            <td scope="row">@checkoutHistory.LibraryCard.Id</td>
+                        </tr>
+                     }
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col">
+            <h4>Current Holds</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Hold Placed</th>
+                        <th scope="col">Patron</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var currentHolds in Model.CurrentHolds)
+                     {
+                        <tr>
+                            <td scope="row">@currentHolds.HoldPlaced</td>
+                            <td scope="row">@currentHolds.PatronName</td>
+                        </tr>
+                     }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
