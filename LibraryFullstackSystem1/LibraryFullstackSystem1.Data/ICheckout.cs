@@ -11,7 +11,7 @@ namespace LibraryFullstackSystem1.Data
         Checkout GetById(int checkoutId);
         void Add(Checkout newCheckout);
         void CheckOutItem(int assetId, int libraryCardId);
-        void CheckInItem(int assetId, int libraryCardId);
+        void CheckInItem(int assetId);
         IEnumerable<CheckoutHistory> GetCheckoutHistories(int id);
         string GetCurrentCheckoutPatron(int assetId);
 

@@ -23,11 +23,11 @@ namespace LibraryFullstackSystem1.Services
             _DbContext.SaveChanges();
         }
 
-        public void CheckInItem(int assetId, int libraryCardId)
+        public void CheckInItem(int assetId)
         {
             var now = DateTime.Now;
 
-            var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == libraryCardId);
+            var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
 
             //Remove any existing checkouts in the item
             RemoveExistingCheckouts(assetId);
@@ -236,25 +236,26 @@ namespace LibraryFullstackSystem1.Services
             _DbContext.SaveChanges();
         }
 
-        public void PlaceHold(int assetId, int libraryCardId)
+        public void PlaceHold(int AssetId, int libraryCardId)
         {
             var now = DateTime.Now;
 
             var item = _DbContext.LibraryAssets
-                .Include(p=>p.Status)
-                .FirstOrDefault(p => p.Id == assetId);
+                .Include(p => p.Status)
+                .FirstOrDefault(p => p.Id == AssetId);
 
             var card = _DbContext.LibraryCards.FirstOrDefault(p => p.Id == libraryCardId);
 
             if (item.Status.Name == "Available")
             {
-                MarkItem(assetId, "On Hold");
-
+                MarkItem(AssetId, "On Hold");
+            }
+            else
+            {
                 var newHold = new Hold
-                {  
+                {
                     LibraryAsset = item,
                     LibraryCard = card,
-                    Id = assetId,
                     HoldPlaced = now
                 };
 

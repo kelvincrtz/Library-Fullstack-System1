@@ -20,7 +20,7 @@
 
                     @using (Html.BeginForm("PlaceHold", "Catalog", FormMethod.Post))
                     {
-                        @Html.HiddenFor(p => p.AsssetId)
+                        @Html.HiddenFor(p => p.AssetId)
                         <div>
                             Please insert a Library card
                             @Html.TextBoxFor(p => p.LibraryCardId)

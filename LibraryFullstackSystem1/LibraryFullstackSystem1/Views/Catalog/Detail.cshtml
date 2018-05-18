@@ -57,7 +57,7 @@
     {
         <p>Checkout by: @Model.PatronName</p>
         <p><a class="btn btn-lg btn-warning" role="button" asp-controller="Catalog" asp-action="Checkin" asp-route-id="@Model.AssetId">Check In</a></p>
-        <p><a class="btn btn-lg btn-success" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Check Hold</a></p>
+        <p><a class="btn btn-lg btn-success" role="button" asp-controller="Catalog" asp-action="Hold" asp-route-id="@Model.AssetId">Place Hold</a></p>
         <p><a class="btn btn-lg btn-default" role="button" asp-controller="Catalog" asp-action="Lost" asp-route-id="@Model.AssetId">Lost</a></p>
     }
 

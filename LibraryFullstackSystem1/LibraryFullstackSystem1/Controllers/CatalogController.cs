@@ -89,6 +89,12 @@ namespace LibraryFullstackSystem1.Controllers
             return View(model);
         }
 
+        public IActionResult Checkin(int id)
+        {
+            _ICheckout.CheckInItem(id);
+            return RedirectToAction("Detail", new { id = id });
+        }
+
         public IActionResult Hold(int id)
         {
             var asset = _ILibraryAsset.GetById(id);
@@ -116,11 +122,11 @@ namespace LibraryFullstackSystem1.Controllers
         }
 
         [HttpPost]
-        public IActionResult PlaceHold(int id, int libraryCardId)
+        public IActionResult PlaceHold(int assetId, int libraryCardId)
         {
-            _ICheckout.PlaceHold(id, libraryCardId);
+            _ICheckout.PlaceHold(assetId, libraryCardId);
 
-            return RedirectToAction("Detail", new { id = id });
+            return RedirectToAction("Detail", new { id = assetId });
         }
 
         public IActionResult MarkLost(int id)
