@@ -72,5 +72,67 @@ namespace LibraryFullstackSystem1.Controllers
 
             return View(model);
         }
+
+        public IActionResult Checkout(int id)
+        {
+            var asset = _ILibraryAsset.GetById(id);
+
+            var model = new CheckoutModel
+            {
+                AsssetId = id,
+                ImageUrl = asset.ImageURL,
+                Title = asset.Title,
+                LibraryCardId = "",
+                IsCheckedOut = _ICheckout.IsCheckedOut(id)
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Hold(int id)
+        {
+            var asset = _ILibraryAsset.GetById(id);
+
+            var model = new CheckoutModel
+            {
+                AsssetId = id,
+                ImageUrl = asset.ImageURL,
+                Title = asset.Title,
+                LibraryCardId = "",
+                IsCheckedOut = _ICheckout.IsCheckedOut(id),
+                HoldCount = _ICheckout.GetCurrentHolds(id).Count()
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult PlaceCheckout(int assetId, int libraryCardId)
+        {
+            _ICheckout.CheckOutItem(assetId, libraryCardId);
+
+            return RedirectToAction("Detail", new { id = assetId });
+        }
+
+        [HttpPost]
+        public IActionResult PlaceHold(int assetId, int libraryCardId)
+        {
+            _ICheckout.PlaceHold(assetId, libraryCardId);
+
+            return RedirectToAction("Detail", new { id = assetId });
+        }
+
+        public IActionResult MarkLost(int assetId)
+        {
+            _ICheckout.MarkLost(assetId);
+            return RedirectToAction("Detail", new { id = assetId });
+        }
+
+        public IActionResult MarkFound(int assetId)
+        {
+            _ICheckout.MarkFound(assetId);
+            return RedirectToAction("Detail", new { id = assetId });
+        }
     }
 }

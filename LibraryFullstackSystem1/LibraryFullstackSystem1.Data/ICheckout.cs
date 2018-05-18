@@ -15,6 +15,8 @@ namespace LibraryFullstackSystem1.Data
         IEnumerable<CheckoutHistory> GetCheckoutHistories(int id);
         string GetCurrentCheckoutPatron(int assetId);
 
+        bool IsCheckedOut(int assetId);
+
         void PlaceHold(int assetId, int libraryCardId);
         string GetCurrentHoldPatronName(int id);
         DateTime GetCurrentHoldPlaced(int id);
