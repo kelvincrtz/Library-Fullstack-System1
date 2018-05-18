@@ -204,6 +204,7 @@ namespace LibraryFullstackSystem1.Services
             var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
 
             _DbContext.Update(item);
+
             item.Status = _DbContext.Statuses.FirstOrDefault(p => p.Name == status);
         }
 

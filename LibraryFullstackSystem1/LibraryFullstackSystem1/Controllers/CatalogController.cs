@@ -108,11 +108,11 @@ namespace LibraryFullstackSystem1.Controllers
 
 
         [HttpPost]
-        public IActionResult PlaceCheckout(int assetId, int libraryCardId)
+        public IActionResult PlaceCheckout(int id, int libraryCardId)
         {
-            _ICheckout.CheckOutItem(assetId, libraryCardId);
+            _ICheckout.CheckOutItem(id, libraryCardId);
 
-            return RedirectToAction("Detail", new { id = assetId });
+            return RedirectToAction("Detail", new { id = id });
         }
 
         [HttpPost]

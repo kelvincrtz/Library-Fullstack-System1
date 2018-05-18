@@ -1,7 +1,38 @@
-﻿
+﻿@model LibraryFullstackSystem1.Models.Catalog.CheckoutModel
+
 @{
     ViewData["Title"] = "Checkout";
 }
 
-<h2>Checkout</h2>
+
+<div class="body-content">
+    <h2> Checkout Item</h2>
+
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <p>Title: @Model.Title</p>
+                    <img class="imageSmall" src="@Model.ImageUrl"/>
+                </div>
+                <div class="col-md-9">
+                    @using (Html.BeginForm("PlaceCheckout", "Catalog", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(p=>p.AsssetId)
+                        <div>
+                            Please insert a Library card
+                            @Html.TextBoxFor(p=>p.LibraryCardId)
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success btn-lg">Check Out Item</button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 

@@ -1,7 +1,41 @@
-﻿
+﻿@model LibraryFullstackSystem1.Models.Catalog.CheckoutModel
+
 @{
     ViewData["Title"] = "Hold";
 }
 
-<h2>Hold</h2>
+<div class="body-content">
+    <h2> Place Hold on Library Item</h2>
+
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <p>Title: @Model.Title</p>
+                    <img class="imageSmall" src="@Model.ImageUrl" />
+                </div>
+                <div class="col-md-9">
+                    <p>There are current @Model.HoldCount holds for this item</p>
+
+                    @using (Html.BeginForm("PlaceHold", "Catalog", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(p => p.AsssetId)
+                        <div>
+                            Please insert a Library card
+                            @Html.TextBoxFor(p => p.LibraryCardId)
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-warning btn-lg">Place Hold</button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
 
