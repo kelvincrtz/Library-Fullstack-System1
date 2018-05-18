@@ -240,7 +240,9 @@ namespace LibraryFullstackSystem1.Services
         {
             var now = DateTime.Now;
 
-            var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
+            var item = _DbContext.LibraryAssets
+                .Include(p=>p.Status)
+                .FirstOrDefault(p => p.Id == assetId);
 
             var card = _DbContext.LibraryCards.FirstOrDefault(p => p.Id == libraryCardId);
 

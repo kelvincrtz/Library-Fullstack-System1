@@ -12,9 +12,10 @@ using System;
 namespace LibraryFullstackSystem1.Data.Migrations
 {
     [DbContext(typeof(LibradyFullstackSystemDbContext))]
-    partial class LibradyFullstackSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180518030157_Second Migration")]
+    partial class SecondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,19 +191,19 @@ namespace LibraryFullstackSystem1.Data.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<int?>("HomeLibraryBranchId");
+                    b.Property<int?>("HomeLibraryBranchIdId");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int?>("LibraryCardId");
+                    b.Property<int?>("LibraryCardIdId");
 
                     b.Property<string>("TelephoneNumber");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HomeLibraryBranchId");
+                    b.HasIndex("HomeLibraryBranchIdId");
 
-                    b.HasIndex("LibraryCardId");
+                    b.HasIndex("LibraryCardIdId");
 
                     b.ToTable("Patrons");
                 });
@@ -310,13 +311,13 @@ namespace LibraryFullstackSystem1.Data.Migrations
 
             modelBuilder.Entity("LibraryFullstackSystem1.Data.Model.Patron", b =>
                 {
-                    b.HasOne("LibraryFullstackSystem1.Data.Model.LibraryBranch", "HomeLibraryBranch")
+                    b.HasOne("LibraryFullstackSystem1.Data.Model.LibraryBranch", "HomeLibraryBranchId")
                         .WithMany("Patrons")
-                        .HasForeignKey("HomeLibraryBranchId");
+                        .HasForeignKey("HomeLibraryBranchIdId");
 
-                    b.HasOne("LibraryFullstackSystem1.Data.Model.LibraryCard", "LibraryCard")
+                    b.HasOne("LibraryFullstackSystem1.Data.Model.LibraryCard", "LibraryCardId")
                         .WithMany()
-                        .HasForeignKey("LibraryCardId");
+                        .HasForeignKey("LibraryCardIdId");
                 });
 #pragma warning restore 612, 618
         }

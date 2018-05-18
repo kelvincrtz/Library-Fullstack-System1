@@ -79,7 +79,7 @@ namespace LibraryFullstackSystem1.Controllers
 
             var model = new CheckoutModel
             {
-                AsssetId = id,
+                AssetId = id,
                 ImageUrl = asset.ImageURL,
                 Title = asset.Title,
                 LibraryCardId = "",
@@ -95,7 +95,7 @@ namespace LibraryFullstackSystem1.Controllers
 
             var model = new CheckoutModel
             {
-                AsssetId = id,
+                AssetId = id,
                 ImageUrl = asset.ImageURL,
                 Title = asset.Title,
                 LibraryCardId = "",
@@ -108,31 +108,31 @@ namespace LibraryFullstackSystem1.Controllers
 
 
         [HttpPost]
-        public IActionResult PlaceCheckout(int id, int libraryCardId)
+        public IActionResult PlaceCheckout(int AssetId, int libraryCardId)
         {
-            _ICheckout.CheckOutItem(id, libraryCardId);
+            _ICheckout.CheckOutItem(AssetId, libraryCardId);
+
+            return RedirectToAction("Detail", new { id = AssetId });
+        }
+
+        [HttpPost]
+        public IActionResult PlaceHold(int id, int libraryCardId)
+        {
+            _ICheckout.PlaceHold(id, libraryCardId);
 
             return RedirectToAction("Detail", new { id = id });
         }
 
-        [HttpPost]
-        public IActionResult PlaceHold(int assetId, int libraryCardId)
+        public IActionResult MarkLost(int id)
         {
-            _ICheckout.PlaceHold(assetId, libraryCardId);
-
-            return RedirectToAction("Detail", new { id = assetId });
+            _ICheckout.MarkLost(id);
+            return RedirectToAction("Detail", new { id = id });
         }
 
-        public IActionResult MarkLost(int assetId)
+        public IActionResult MarkFound(int id)
         {
-            _ICheckout.MarkLost(assetId);
-            return RedirectToAction("Detail", new { id = assetId });
-        }
-
-        public IActionResult MarkFound(int assetId)
-        {
-            _ICheckout.MarkFound(assetId);
-            return RedirectToAction("Detail", new { id = assetId });
+            _ICheckout.MarkFound(id);
+            return RedirectToAction("Detail", new { id = id });
         }
     }
 }

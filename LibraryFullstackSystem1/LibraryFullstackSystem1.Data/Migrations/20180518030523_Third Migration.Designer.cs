@@ -12,9 +12,10 @@ using System;
 namespace LibraryFullstackSystem1.Data.Migrations
 {
     [DbContext(typeof(LibradyFullstackSystemDbContext))]
-    partial class LibradyFullstackSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180518030523_Third Migration")]
+    partial class ThirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
