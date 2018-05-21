@@ -75,6 +75,7 @@ namespace LibraryFullstackSystem1.Controllers
 
         public IActionResult Checkout(int id)
         {
+
             var asset = _ILibraryAsset.GetById(id);
 
             var model = new CheckoutModel

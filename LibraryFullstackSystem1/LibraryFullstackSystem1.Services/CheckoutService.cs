@@ -82,6 +82,7 @@ namespace LibraryFullstackSystem1.Services
             }
             else
             {
+
                 var item = _DbContext.LibraryAssets.FirstOrDefault(p => p.Id == assetId);
 
                 MarkItem(assetId, "Checked Out");
@@ -210,7 +211,7 @@ namespace LibraryFullstackSystem1.Services
 
         private void CloseExistingCheckoutHistory(int assetId, DateTime now)
         {
-            var checkoutHistory = _DbContext.CheckoutHistories.FirstOrDefault(p => p.Id == assetId && p.CheckedIn == null);
+            var checkoutHistory = _DbContext.CheckoutHistories.FirstOrDefault(p => p.LibraryAsset.Id == assetId && p.CheckedIn == null);
 
             if (checkoutHistory != null)
             {
