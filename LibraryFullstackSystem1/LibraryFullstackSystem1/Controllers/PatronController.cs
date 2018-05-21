@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using LibraryFullstackSystem1.Data;
 using Microsoft.AspNetCore.Mvc;
 using LibraryFullstackSystem1.Models.Patron;
@@ -26,7 +23,8 @@ namespace LibraryFullstackSystem1.Controllers
                 Id = result.Id,
                 FirstName = result.FirstName,
                 LastName = result.LastName,
-                LibrayCardId = result.LibraryCard.Id
+                LibrayCardId = result.LibraryCard.Id,
+                HomebranchLocation = result.HomeLibraryBranch.Name
             });
 
             var model = new PatronIndexModel()

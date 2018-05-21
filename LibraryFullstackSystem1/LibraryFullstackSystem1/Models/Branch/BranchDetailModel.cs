@@ -15,7 +15,6 @@ namespace LibraryFullstackSystem1.Models.Branch
         public string ImageUrl { get; set; }
         public string Telephone { get; set; }
         public DateTime OpeningClosingHours { get; set; }
-        
-        public IEnumerable<Patron> BranchPatrons { get; set; }
+
     }
 }
