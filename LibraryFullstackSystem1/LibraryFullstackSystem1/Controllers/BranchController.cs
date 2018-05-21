@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace LibraryFullstackSystem1.Controllers
 {
-    public class LibraryBranchController : Controller
+    public class BranchController : Controller
     {
         private readonly ILibraryBranches _ILibraryBranches;
 
-        public LibraryBranchController(ILibraryBranches ILibraryBranches)
+        public BranchController(ILibraryBranches ILibraryBranches)
         {
             _ILibraryBranches = ILibraryBranches;
         }
