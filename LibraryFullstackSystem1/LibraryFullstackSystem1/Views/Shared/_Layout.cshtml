@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LibraryFullstackSystem1</title>
+    <title>@ViewData["Title"] - Library Manangement System LMS</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -25,14 +25,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">LibraryFullstackSystem1</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Library Management LMS</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Catalog" asp-action="Index">Assets</a></li>
+                    <li><a asp-area="" asp-controller="Patron" asp-action="Index">Patrons</a></li>
+                    <li><a asp-area="" asp-controller="Branch" asp-action="Index">Branches</a></li>
                 </ul>
             </div>
         </div>
