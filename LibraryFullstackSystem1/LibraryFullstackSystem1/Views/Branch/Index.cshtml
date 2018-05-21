@@ -8,17 +8,17 @@
     <div class="">
         <h2>Branches</h2>
     </div>
-    <div class="container">
+    <div class="jumbotron">
         <div class="row">
             @foreach (var branch in Model.Branches)
             {
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="@branch.Name" class="">
+                    <img src="@branch.ImageUrl" class="">
                     <div class="caption">
-                        <h3>@branch.Name</h3>
+                        <h3 class="">@branch.Name</h3>
                         <p>@branch.Address</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <p><a asp-controller="Branch" asp-action="Detail" asp-route-id="@branch.Id" class="btn btn-primary" role="button">Visit</a></p>
                     </div>
                 </div>
             </div>
