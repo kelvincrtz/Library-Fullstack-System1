@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LibraryFullstackSystem1.Data
 {
-    public interface ILibraryBranches
+    public interface ILibraryBranch
     {
         IEnumerable<LibraryBranch> GetAll();
         LibraryBranch GetById(int id);

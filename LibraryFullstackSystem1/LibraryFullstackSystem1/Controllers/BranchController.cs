@@ -7,9 +7,9 @@ namespace LibraryFullstackSystem1.Controllers
 {
     public class BranchController : Controller
     {
-        private readonly ILibraryBranches _ILibraryBranches;
+        private readonly ILibraryBranch _ILibraryBranches;
 
-        public BranchController(ILibraryBranches ILibraryBranches)
+        public BranchController(ILibraryBranch ILibraryBranches)
         {
             _ILibraryBranches = ILibraryBranches;
         }

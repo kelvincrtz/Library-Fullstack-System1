@@ -11,7 +11,7 @@ using System;
 
 namespace LibraryFullstackSystem1.Data.Migrations
 {
-    [DbContext(typeof(LibradyFullstackSystemDbContext))]
+    [DbContext(typeof(LibrarySystemDbContext))]
     [Migration("20180516004932_Inital Migration")]
     partial class InitalMigration
     {

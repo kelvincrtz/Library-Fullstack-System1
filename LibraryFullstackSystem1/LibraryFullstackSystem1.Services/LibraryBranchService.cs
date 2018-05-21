@@ -7,11 +7,11 @@ using System.Text;
 
 namespace LibraryFullstackSystem1.Services
 {
-    public class LibraryBranchService : ILibraryBranches
+    public class LibraryBranchService : ILibraryBranch
     {
-        private readonly LibradyFullstackSystemDbContext _DbContext;
+        private readonly LibrarySystemDbContext _DbContext;
 
-        public LibraryBranchService(LibradyFullstackSystemDbContext DbContext)
+        public LibraryBranchService(LibrarySystemDbContext DbContext)
         {
             _DbContext = DbContext;
         }

@@ -11,7 +11,7 @@ using System;
 
 namespace LibraryFullstackSystem1.Data.Migrations
 {
-    [DbContext(typeof(LibradyFullstackSystemDbContext))]
+    [DbContext(typeof(LibrarySystemDbContext))]
     partial class LibradyFullstackSystemDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

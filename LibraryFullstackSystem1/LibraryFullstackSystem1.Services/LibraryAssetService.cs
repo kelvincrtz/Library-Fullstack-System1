@@ -9,9 +9,9 @@ namespace LibraryFullstackSystem1.Services
 {
     public class LibraryAssetService : ILibraryAsset
     {
-        private readonly LibradyFullstackSystemDbContext _LibradyFullstackSystemDbContext;
+        private readonly LibrarySystemDbContext _LibradyFullstackSystemDbContext;
 
-        public LibraryAssetService(LibradyFullstackSystemDbContext LibradyFullstackSystemDbContext)
+        public LibraryAssetService(LibrarySystemDbContext LibradyFullstackSystemDbContext)
         {
             _LibradyFullstackSystemDbContext = LibradyFullstackSystemDbContext;
         }

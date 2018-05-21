@@ -26,10 +26,10 @@ namespace LibraryFullstackSystem1
 
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<ICheckout, CheckoutService>();
-            services.AddScoped<ILibraryBranches, LibraryBranchService>();
+            services.AddScoped<ILibraryBranch, LibraryBranchService>();
 
 
-            services.AddDbContext<LibradyFullstackSystemDbContext>(options =>
+            services.AddDbContext<LibrarySystemDbContext>(options =>
                                 options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
         }
 

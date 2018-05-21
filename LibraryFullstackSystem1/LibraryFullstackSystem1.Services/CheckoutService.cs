@@ -10,9 +10,9 @@ namespace LibraryFullstackSystem1.Services
 {
     public class CheckoutService : ICheckout
     {
-        private readonly LibradyFullstackSystemDbContext _DbContext;
+        private readonly LibrarySystemDbContext _DbContext;
         
-        public CheckoutService(LibradyFullstackSystemDbContext DbContext)
+        public CheckoutService(LibrarySystemDbContext DbContext)
         {
             _DbContext = DbContext;
         }

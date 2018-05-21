@@ -11,7 +11,7 @@ using System;
 
 namespace LibraryFullstackSystem1.Data.Migrations
 {
-    [DbContext(typeof(LibradyFullstackSystemDbContext))]
+    [DbContext(typeof(LibrarySystemDbContext))]
     [Migration("20180518030157_Second Migration")]
     partial class SecondMigration
     {

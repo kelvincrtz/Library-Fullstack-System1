@@ -4,9 +4,9 @@ using System;
 
 namespace LibraryFullstackSystem1.Data
 {
-    public class LibradyFullstackSystemDbContext : DbContext
+    public class LibrarySystemDbContext : DbContext
     {
-        public LibradyFullstackSystemDbContext(DbContextOptions options) : base(options)
+        public LibrarySystemDbContext(DbContextOptions options) : base(options)
         {
 
         }
