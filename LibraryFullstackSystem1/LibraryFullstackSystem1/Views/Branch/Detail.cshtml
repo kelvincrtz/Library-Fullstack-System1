@@ -1,0 +1,20 @@
+﻿@model LibraryFullstackSystem1.Models.Branch.BranchDetailModel
+@{
+    ViewData["Title"] = "Branch Detail";
+}
+
+<div class="body-content">
+    <h2>Branch Detail</h2>
+    <div class="jumbotron">
+        <h1>@Model.Name</h1>
+
+        <div class="thumbnail">
+            <img src="@Model.ImageUrl" class="" />
+        </div>
+
+        <small>@Model.Description</small>
+        <small>@Model.Telephone</small>
+        <small>@Model.Address</small>
+    </div>
+</div>
+

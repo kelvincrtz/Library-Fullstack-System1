@@ -37,9 +37,17 @@ namespace LibraryFullstackSystem1.Controllers
 
         public IActionResult Detail(int id)
         {
+            var branchDetail = _ILibraryBranches.GetById(id);
+
             var model = new BranchDetailModel()
             {
-
+                Id = id,
+                Name = branchDetail.Name,
+                Address = branchDetail.Address,
+                Telephone = branchDetail.Telephone,
+                ImageUrl = branchDetail.ImageURL,
+                Description = branchDetail.Description,
+                OpeningClosingHours = branchDetail.OpenDate
             };
 
             return View(model);
