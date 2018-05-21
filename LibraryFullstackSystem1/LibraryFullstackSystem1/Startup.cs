@@ -25,7 +25,7 @@ namespace LibraryFullstackSystem1
             services.AddSingleton(Configuration);
 
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
-            services.AddScoped<ICheckout, CheckoutService>();
+            services.AddScoped<ICheckout, LibraryCheckoutService>();
             services.AddScoped<ILibraryBranch, LibraryBranchService>();
 
 

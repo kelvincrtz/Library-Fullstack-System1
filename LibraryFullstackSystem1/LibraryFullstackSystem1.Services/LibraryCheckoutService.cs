@@ -8,11 +8,11 @@ using System.Text;
 
 namespace LibraryFullstackSystem1.Services
 {
-    public class CheckoutService : ICheckout
+    public class LibraryCheckoutService : ICheckout
     {
         private readonly LibrarySystemDbContext _DbContext;
         
-        public CheckoutService(LibrarySystemDbContext DbContext)
+        public LibraryCheckoutService(LibrarySystemDbContext DbContext)
         {
             _DbContext = DbContext;
         }
