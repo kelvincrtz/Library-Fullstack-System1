@@ -26,6 +26,7 @@ namespace LibraryFullstackSystem1
 
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<ICheckout, CheckoutService>();
+            services.AddScoped<ILibraryBranches, LibraryBranchService>();
 
 
             services.AddDbContext<LibradyFullstackSystemDbContext>(options =>
