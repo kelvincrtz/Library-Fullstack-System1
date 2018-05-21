@@ -23,7 +23,7 @@ namespace LibraryFullstackSystem1.Services
 
         public LibraryBranch GetById(int id)
         {
-            return _DbContext.LibraryBranches.FirstOrDefault( p => p.Id == id);
+            return _DbContext.LibraryBranches.FirstOrDefault(p => p.Id == id);
         }
     }
 }

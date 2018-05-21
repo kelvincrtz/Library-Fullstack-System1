@@ -34,5 +34,15 @@ namespace LibraryFullstackSystem1.Controllers
 
             return View(model);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var model = new BranchDetailModel()
+            {
+
+            };
+
+            return View(model);
+        }
     }
 }
