@@ -21,13 +21,12 @@ namespace LibraryFullstackSystem1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
             services.AddSingleton(Configuration);
 
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<ICheckout, LibraryCheckoutService>();
             services.AddScoped<ILibraryBranch, LibraryBranchService>();
-
+            services.AddScoped<IPatron, LibraryPatronService>();
 
             services.AddDbContext<LibrarySystemDbContext>(options =>
                                 options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
@@ -52,7 +51,7 @@ namespace LibraryFullstackSystem1
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Catalog}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
