@@ -1,0 +1,22 @@
+﻿@model LibraryFullstackSystem1.Models.Patron.PatronDetailModel
+
+@{
+    ViewData["Title"] = "Patron Detail";
+}
+
+<div class="body-content">
+    <div class="jumbotron">
+        <div class="">
+            <h2>
+               @Model.LastName, @Model.FirstName
+            </h2>
+            <p>@Model.Address</p>
+            <p>@Model.DateOfBirth</p>
+            <p>@Model.Branch</p>
+
+            <p>Balance: @Model.Fee</p>
+
+
+        </div>
+    </div>
+</div>

@@ -24,7 +24,9 @@ namespace LibraryFullstackSystem1.Services
 
         public Patron GetById(int id)
         {
-            return _DbContext.Patrons.FirstOrDefault(p => p.Id == id);
+            return _DbContext.Patrons
+                .Include(p=>p.LibraryCard)
+                .FirstOrDefault(p => p.Id == id);
         }
     }
 }

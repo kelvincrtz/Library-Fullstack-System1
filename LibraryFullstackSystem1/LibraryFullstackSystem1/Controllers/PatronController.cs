@@ -34,5 +34,18 @@ namespace LibraryFullstackSystem1.Controllers
 
             return View(model);
         }
+
+        public IActionResult Detail(int id)
+        {
+            var patron = _Patron.GetById(id);
+
+            var model = new PatronDetailModel()
+            {
+
+            };
+
+
+            return View(model);
+        }
     }
 }
