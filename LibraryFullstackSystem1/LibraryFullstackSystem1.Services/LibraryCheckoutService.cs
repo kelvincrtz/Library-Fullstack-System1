@@ -222,7 +222,7 @@ namespace LibraryFullstackSystem1.Services
 
         private void RemoveExistingCheckouts(int assetId)
         {
-            var checkout = _DbContext.Checkouts.FirstOrDefault(p => p.Id == assetId);
+            var checkout = _DbContext.Checkouts.FirstOrDefault(p => p.LibraryAsset.Id == assetId);
 
             if (checkout != null)
             {
