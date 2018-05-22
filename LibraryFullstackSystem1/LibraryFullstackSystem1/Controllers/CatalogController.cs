@@ -130,16 +130,16 @@ namespace LibraryFullstackSystem1.Controllers
             return RedirectToAction("Detail", new { id = assetId });
         }
 
-        public IActionResult MarkLost(int id)
+        public IActionResult Lost(int Id)
         {
-            _ICheckout.MarkLost(id);
-            return RedirectToAction("Detail", new { id = id });
+            _ICheckout.MarkLost(Id);
+            return RedirectToAction("Detail", new { id = Id});
         }
 
-        public IActionResult MarkFound(int id)
+        public IActionResult Found(int Id)
         {
-            _ICheckout.MarkFound(id);
-            return RedirectToAction("Detail", new { id = id });
+            _ICheckout.MarkFound(Id);
+            return RedirectToAction("Detail", new { id = Id });
         }
     }
 }

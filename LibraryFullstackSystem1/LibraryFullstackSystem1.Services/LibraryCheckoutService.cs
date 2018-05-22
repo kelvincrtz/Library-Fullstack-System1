@@ -188,7 +188,7 @@ namespace LibraryFullstackSystem1.Services
             var now = DateTime.Now;
 
             //MarkItem
-            MarkItem(assetId, "Found");
+            MarkItem(assetId, "Available");
 
             //Remove any exisiting Checkouts
             RemoveExistingCheckouts(assetId);
