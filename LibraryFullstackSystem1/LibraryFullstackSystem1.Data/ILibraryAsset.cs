@@ -18,5 +18,7 @@ namespace LibraryFullstackSystem1.Data
         string GetIsbn(int id);
 
         LibraryBranch GetCurrentLocation(int id);
+
+        IEnumerable<LibraryAsset> SearchByTitle(string title);
     }
 }

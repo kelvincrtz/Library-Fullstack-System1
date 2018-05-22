@@ -113,7 +113,6 @@ namespace LibraryFullstackSystem1.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public IActionResult PlaceCheckout(int AssetId, int libraryCardId)
         {
@@ -128,6 +127,28 @@ namespace LibraryFullstackSystem1.Controllers
             _ICheckout.PlaceHold(assetId, libraryCardId);
 
             return RedirectToAction("Detail", new { id = assetId });
+        }
+
+        [HttpPost]
+        public IActionResult IndexSearchTitle(string title)
+        {
+            var assetTitleModels = _ILibraryAsset.SearchByTitle(title);
+
+            var listingModel = assetTitleModels.Select(result => new AssetIndexListingModel{
+                AuthorOrDirector = _ILibraryAsset.GetAuthorOrDirector(result.Id),
+                DeweyCallNumber = _ILibraryAsset.GetDeweyIndex(result.Id),
+                ImageUrl = result.ImageURL,
+                Id = result.Id,
+                Title = result.Title,
+                Type = _ILibraryAsset.GetType(result.Id)
+            });
+
+            var model = new AssetIndexModel
+            {
+                Assets = listingModel
+            };   
+
+            return View(model);
         }
 
         public IActionResult Lost(int Id)

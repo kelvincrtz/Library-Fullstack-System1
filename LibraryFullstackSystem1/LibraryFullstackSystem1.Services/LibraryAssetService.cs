@@ -85,5 +85,10 @@ namespace LibraryFullstackSystem1.Services
             return isBook ?
                 "Book" : "Video";
         }
+
+        public IEnumerable<LibraryAsset> SearchByTitle(string title)
+        {
+            return _DbContext.LibraryAssets.Where(p => p.Title == title);
+        }
     }
 }
