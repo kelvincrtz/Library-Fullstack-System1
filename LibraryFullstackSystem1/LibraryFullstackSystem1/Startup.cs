@@ -27,6 +27,7 @@ namespace LibraryFullstackSystem1
             services.AddScoped<ICheckout, LibraryCheckoutService>();
             services.AddScoped<ILibraryBranch, LibraryBranchService>();
             services.AddScoped<IPatron, LibraryPatronService>();
+            services.AddScoped<ILibraryCard, LibraryCardService>();
 
             services.AddDbContext<LibrarySystemDbContext>(options =>
                                 options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));

@@ -41,7 +41,14 @@ namespace LibraryFullstackSystem1.Controllers
 
             var model = new PatronDetailModel()
             {
-
+                Id = patron.Id,
+                LastName = patron.LastName,
+                FirstName = patron.FirstName,
+                Address = patron.Address,
+                Telephone = patron.TelephoneNumber,
+                Branch = patron.HomeLibraryBranch.Name,
+                DateOfBirth = patron.DateOfBirth,
+                Fee = patron.LibraryCard.Fees
             };
 
 
