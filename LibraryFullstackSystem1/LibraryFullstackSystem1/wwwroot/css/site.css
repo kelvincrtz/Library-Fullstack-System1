@@ -3,6 +3,11 @@
     width:90px;
 }
 
+.iconSmall {
+    height: 50px;
+    width: 50px;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;

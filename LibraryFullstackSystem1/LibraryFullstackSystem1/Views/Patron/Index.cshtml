@@ -1,18 +1,18 @@
 ﻿@model LibraryFullstackSystem1.Models.Patron.PatronIndexModel
 
 @{
-    ViewData["Title"] = "Patron Page";
+    ViewData["Title"] = "Patrons Page";
 }
 
 <div class="body-content">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2>Patrons</h2>
+            <h2 class="text-capitalize text-center">Patrons</h2>
         </div>
-            <table class="table table-bordered table-hover">
+            <table class="table table-hover">
                 <thead class="">
                     <tr class="">
-                        <th class="">Id</th>
+                        <th class="">Icon</th>
                         <th class="">Last Name</th>
                         <th class="">First Name</th>
                         <th class="">Librarycard Id</th>
@@ -23,7 +23,9 @@
                     @foreach (var patron in Model.Patrons)
                     {
                     <tr class="">
-                        <td>@patron.Id</td>
+                        <td class="">
+                            <img src="~/images/patron/patron.png" class="iconSmall"/>
+                        </td>
                         <td>@patron.LastName</td>
                         <td>@patron.FirstName</td>
                         <td>@patron.LibrayCardId</td>
