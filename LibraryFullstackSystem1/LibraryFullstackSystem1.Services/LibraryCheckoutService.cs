@@ -172,7 +172,7 @@ namespace LibraryFullstackSystem1.Services
         {
             return _DbContext.Holds
                 .Include(p => p.LibraryAsset)
-                .Where(p => p.Id == id);
+                .Where(p => p.LibraryAsset.Id == id);
         }
 
         public Checkout GetLatestCheckout(int id)
