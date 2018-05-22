@@ -58,14 +58,14 @@ namespace LibraryFullstackSystem1.Services
 
         public void CheckoutToEarliestHold(int assetId, IQueryable<Hold> currentHold)
         {
-            var earlistHold = currentHold
+            var earliestHold = currentHold
                 .Include(p => p.LibraryCard)
                 .Include(p => p.LibraryAsset)
                 .OrderBy(p => p.HoldPlaced).FirstOrDefault(p => p.LibraryAsset.Id == assetId);
 
-            var libraryCard = earlistHold.LibraryCard;
+            var libraryCard = earliestHold.LibraryCard;
 
-            _DbContext.Remove(earlistHold);
+            _DbContext.Remove(earliestHold);
             _DbContext.SaveChanges();
 
             CheckOutItem(assetId, libraryCard.Id);
