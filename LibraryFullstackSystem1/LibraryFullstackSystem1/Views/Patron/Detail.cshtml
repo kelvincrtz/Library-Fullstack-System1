@@ -20,6 +20,40 @@
             </div>
 
             <div class="col-sm-4">
+                <h3 class="">Current Checkouts:</h3>
+                @if (Model.PatronCheckouts.Any())
+                {
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Since</th>
+                                <th>Until</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var checkouts in Model.PatronCheckouts)
+                            {
+                                <tr>
+                                    <td>
+                                        <small>@checkouts.AssetTitle</small>
+                                    </td>
+                                    <td>
+                                        <small>@checkouts.Since</small>
+                                    </td>
+                                    <td>
+                                        <small>@checkouts.Until</small>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p><small class="text-warning">This patron has no current checkouts</small></p>
+
+                }
 
             </div>
 

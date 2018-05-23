@@ -52,7 +52,15 @@ namespace LibraryFullstackSystem1.Controllers
                     AssetTitle = _Asset.GetTitle(result.LibraryAsset.Id)
                 });
 
-            var currentPatronCheckout = _Checkout.GetCurrentCheckoutPatron
+            var currentPatronCheckout = _Checkout.GetCheckoutPatronDetails(patron.LibraryCard.Id)
+                .Select(result => new PatronCheckoutDetailModel
+                {
+                    LibraryAssetId = result.LibraryAsset.Id,
+                    LibraryCardId = result.LibraryCard.Id,
+                    AssetTitle = _Asset.GetTitle(result.LibraryAsset.Id),
+                    Since = result.Since,
+                    Until = result.Until
+                });
 
             var model = new PatronDetailModel()
             {
@@ -64,7 +72,8 @@ namespace LibraryFullstackSystem1.Controllers
                 Branch = patron.HomeLibraryBranch.Name,
                 DateOfBirth = patron.DateOfBirth,
                 Fee = patron.LibraryCard.Fees,
-                PatronHolds = currentPatronHold
+                PatronHolds = currentPatronHold,
+                PatronCheckouts = currentPatronCheckout
             };
 
 

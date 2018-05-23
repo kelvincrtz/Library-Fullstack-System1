@@ -32,6 +32,7 @@ namespace LibraryFullstackSystem1.Models.Patron
     {
         public int LibraryAssetId { get; set; }
         public int LibraryCardId { get; set; }
+        public string AssetTitle { get; set; }
         public DateTime Since { get; set; }
         public DateTime Until { get; set; }
     }
