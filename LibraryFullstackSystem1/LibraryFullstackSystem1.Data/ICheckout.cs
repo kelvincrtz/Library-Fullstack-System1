@@ -14,6 +14,7 @@ namespace LibraryFullstackSystem1.Data
         void CheckInItem(int assetId);
         IEnumerable<CheckoutHistory> GetCheckoutHistories(int id);
         string GetCurrentCheckoutPatron(int assetId);
+        IEnumerable<Checkout> GetCheckoutPatronDetails(int libraryId);
 
         bool IsCheckedOut(int assetId);
 

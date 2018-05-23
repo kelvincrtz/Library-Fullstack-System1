@@ -10,12 +10,14 @@ namespace LibraryFullstackSystem1.Controllers
         private readonly IPatron _Patron;
         private readonly IHold _Hold;
         private readonly ILibraryAsset _Asset;
+        private readonly ICheckout _Checkout;
 
-        public PatronController(IPatron Patron, IHold Hold, ILibraryAsset Asset)
+        public PatronController(IPatron Patron, IHold Hold, ILibraryAsset Asset, ICheckout Checkout)
         {
             _Patron = Patron;
             _Hold = Hold;
             _Asset = Asset;
+            _Checkout = Checkout;
         }
 
         public IActionResult Index()
@@ -49,6 +51,8 @@ namespace LibraryFullstackSystem1.Controllers
                     HoldPlaced = result.HoldPlaced,
                     AssetTitle = _Asset.GetTitle(result.LibraryAsset.Id)
                 });
+
+            var currentPatronCheckout = _Checkout.GetCurrentCheckoutPatron
 
             var model = new PatronDetailModel()
             {

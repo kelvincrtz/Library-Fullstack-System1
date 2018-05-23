@@ -11,7 +11,7 @@ namespace LibraryFullstackSystem1.Services
     public class LibraryCheckoutService : ICheckout
     {
         private readonly LibrarySystemDbContext _DbContext;
-        
+
         public LibraryCheckoutService(LibrarySystemDbContext DbContext)
         {
             _DbContext = DbContext;
@@ -117,7 +117,6 @@ namespace LibraryFullstackSystem1.Services
         {
             return now.AddDays(30);
         }
-    
 
         public bool IsCheckedOut(int assetId)
         {
@@ -291,6 +290,14 @@ namespace LibraryFullstackSystem1.Services
                 .Include(p => p.LibraryAsset)
                 .Include(p => p.LibraryCard)
                 .FirstOrDefault(p => p.LibraryAsset.Id == assetId);
+        }
+
+        public IEnumerable<Checkout> GetCheckoutPatronDetails(int libraryId)
+        {
+            return _DbContext.Checkouts
+                .Include(p => p.LibraryAsset)
+                .Include(p => p.LibraryCard)
+                .Where(p => p.LibraryCard.Id == libraryId);
         }
     }
 }

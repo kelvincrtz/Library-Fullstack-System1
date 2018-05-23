@@ -17,7 +17,7 @@ namespace LibraryFullstackSystem1.Models.Patron
         public decimal Fee { get; set; }
 
         public IEnumerable<PatronHoldDetailModel> PatronHolds { get; set; }
-        public IEnumerable<Checkout> PatronCheckouts { get; set; }
+        public IEnumerable<PatronCheckoutDetailModel> PatronCheckouts { get; set; }
 
     }
 
@@ -26,5 +26,13 @@ namespace LibraryFullstackSystem1.Models.Patron
         public int AssetId { get; set; }
         public string AssetTitle { get; set; }
         public DateTime HoldPlaced { get; set; }
+    }
+
+    public class PatronCheckoutDetailModel
+    {
+        public int LibraryAssetId { get; set; }
+        public int LibraryCardId { get; set; }
+        public DateTime Since { get; set; }
+        public DateTime Until { get; set; }
     }
 }
