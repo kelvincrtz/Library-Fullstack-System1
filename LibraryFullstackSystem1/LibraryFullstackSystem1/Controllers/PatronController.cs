@@ -8,10 +8,14 @@ namespace LibraryFullstackSystem1.Controllers
     public class PatronController : Controller
     {
         private readonly IPatron _Patron;
+        private readonly IHold _Hold;
+        private readonly ILibraryAsset _Asset;
 
-        public PatronController(IPatron Patron)
+        public PatronController(IPatron Patron, IHold Hold, ILibraryAsset Asset)
         {
             _Patron = Patron;
+            _Hold = Hold;
+            _Asset = Asset;
         }
 
         public IActionResult Index()
@@ -39,6 +43,13 @@ namespace LibraryFullstackSystem1.Controllers
         {
             var patron = _Patron.GetById(id);
 
+            var currentPatronHold = _Hold.GetByLibraryPatronId(patron.LibraryCard.Id)
+                .Select(result => new PatronHoldDetailModel{
+                    AssetId = result.LibraryAsset.Id,
+                    HoldPlaced = result.HoldPlaced,
+                    AssetTitle = _Asset.GetTitle(result.LibraryAsset.Id)
+                });
+
             var model = new PatronDetailModel()
             {
                 Id = patron.Id,
@@ -48,7 +59,8 @@ namespace LibraryFullstackSystem1.Controllers
                 Telephone = patron.TelephoneNumber,
                 Branch = patron.HomeLibraryBranch.Name,
                 DateOfBirth = patron.DateOfBirth,
-                Fee = patron.LibraryCard.Fees
+                Fee = patron.LibraryCard.Fees,
+                PatronHolds = currentPatronHold
             };
 
 

@@ -1,5 +1,7 @@
 ﻿using LibraryFullstackSystem1.Data.Model;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace LibraryFullstackSystem1.Models.Patron
 {
@@ -13,5 +15,16 @@ namespace LibraryFullstackSystem1.Models.Patron
         public string Telephone { get; set; }
         public string Branch { get; set; }
         public decimal Fee { get; set; }
+
+        public IEnumerable<PatronHoldDetailModel> PatronHolds { get; set; }
+        public IEnumerable<Checkout> PatronCheckouts { get; set; }
+
+    }
+
+    public class PatronHoldDetailModel
+    {
+        public int AssetId { get; set; }
+        public string AssetTitle { get; set; }
+        public DateTime HoldPlaced { get; set; }
     }
 }
