@@ -6,20 +6,33 @@
 
 <div class="body-content">
     <div class="jumbotron">
+        <h1 class="text-capitalize">Account information</h1>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-lg-3">
                 <h2>
                     @Model.LastName, @Model.FirstName
                 </h2>
-                <p>@Model.Address</p>
-                <p>@Model.DateOfBirth</p>
-                <p>@Model.Branch</p>
+                <p>
+                    <small class="text-muted">
+                        @Model.Address
+                    </small>
+                </p>
+                <p>
+                    <small class="text-muted">
+                        @Model.DateOfBirth
+                    </small>
+                </p>
+                <p>
+                    <small class="text-muted">
+                        @Model.Branch
+                    </small>
+                </p>
 
-                <p>Balance: $@Model.Fee</p>
+                <p class="text-danger">Balance: $@Model.Fee</p>
 
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <h3 class="">Current Checkouts</h3>
                 @if (Model.PatronCheckouts.Any())
                 {
