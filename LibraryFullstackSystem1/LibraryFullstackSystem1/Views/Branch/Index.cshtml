@@ -17,8 +17,10 @@
                     <img src="@branch.ImageUrl" class="">
                     <div class="caption">
                         <h3 class="">@branch.Name</h3>
-                        <p>@branch.Address</p>
-                        <p><a asp-controller="Branch" asp-action="Detail" asp-route-id="@branch.Id" class="btn btn-primary" role="button">Visit</a></p>
+                        <p>
+                            <small class="text-muted">@branch.Address</small>
+                        </p>
+                        <p><a asp-controller="Branch" asp-action="Detail" asp-route-id="@branch.Id" class="btn btn-primary" role="button">View detail</a></p>
                     </div>
                 </div>
             </div>
