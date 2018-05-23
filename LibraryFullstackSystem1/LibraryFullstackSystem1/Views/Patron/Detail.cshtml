@@ -19,11 +19,11 @@
 
             </div>
 
-            <div class="col-sm-4">
-                <h3 class="">Current Checkouts:</h3>
+            <div class="col-lg-4">
+                <h3 class="">Current Checkouts</h3>
                 @if (Model.PatronCheckouts.Any())
                 {
-                    <table class="table table-condensed table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -57,8 +57,31 @@
 
             </div>
 
-            <div class="col-sm-4">
-
+            <div class="col-lg-4">
+                <h3 class="">Current Holds</h3>
+                @if (Model.PatronHolds.Any())
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Hold Placed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var hold in Model.PatronHolds)
+                            {
+                                <tr>
+                                    <td>@hold.AssetTitle</td>
+                                    <td>@hold.HoldPlaced</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>      
+                }
+                else {
+                    <p><small class="text-warning">This patron has no current holds</small></p>
+                }
             </div>
         </div>
     </div>
