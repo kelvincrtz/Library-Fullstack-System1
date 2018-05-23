@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace LibraryFullstackSystem1.Services
 {
-    public class LibraryAssetService : ILibraryAsset
+    public class AssetService : ILibraryAsset
     {
         private readonly LibrarySystemDbContext _DbContext;
 
-        public LibraryAssetService(LibrarySystemDbContext DbContext)
+        public AssetService(LibrarySystemDbContext DbContext)
         {
             _DbContext = DbContext;
         }
