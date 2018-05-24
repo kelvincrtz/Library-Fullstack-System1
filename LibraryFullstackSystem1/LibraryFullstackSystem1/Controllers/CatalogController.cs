@@ -130,9 +130,9 @@ namespace LibraryFullstackSystem1.Controllers
         }
 
         [HttpPost]
-        public IActionResult IndexSearchTitle(string title)
+        public IActionResult IndexSearchTitle(string search)
         {
-            var assetTitleModels = _ILibraryAsset.SearchByTitle(title);
+            var assetTitleModels = _ILibraryAsset.SearchByTitle(search);
 
             var listingModel = assetTitleModels.Select(result => new AssetIndexListingModel{
                 AuthorOrDirector = _ILibraryAsset.GetAuthorOrDirector(result.Id),
@@ -146,7 +146,7 @@ namespace LibraryFullstackSystem1.Controllers
             var model = new AssetIndexModel
             {
                 Assets = listingModel
-            };   
+            };
 
             return View(model);
         }
