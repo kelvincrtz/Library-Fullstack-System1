@@ -49,7 +49,9 @@
                             {
                                 <tr>
                                     <td>
-                                        <small>@checkouts.AssetTitle</small>
+                                        <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@checkouts.LibraryAssetId">
+                                            <small>@checkouts.AssetTitle</small>
+                                        </a>
                                     </td>
                                     <td>
                                         <small>@checkouts.Since</small>
@@ -84,10 +86,14 @@
                         <tbody>
                             @foreach(var hold in Model.PatronHolds)
                             {
-                                <tr>
-                                    <td>@hold.AssetTitle</td>
-                                    <td>@hold.HoldPlaced</td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@hold.AssetId">
+                                    <small>@hold.AssetTitle</small>
+                                    </a>
+                                </td>
+                                <td>@hold.HoldPlaced</td>
+                            </tr>
                             }
                         </tbody>
                     </table>      

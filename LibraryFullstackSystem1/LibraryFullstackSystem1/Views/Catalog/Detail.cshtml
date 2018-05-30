@@ -84,11 +84,11 @@
                 <tbody>
                     @foreach (var checkoutHistory in Model.CheckoutHistory)
                         {
-                    <tr>
-                        <td scope="row">@checkoutHistory.CheckedOut</td>
-                        <td scope="row">@checkoutHistory.CheckedIn</td>
-                        <td scope="row">@checkoutHistory.LibraryCard.Id</td>
-                    </tr>
+                        <tr>
+                            <td scope="row">@checkoutHistory.CheckedOut</td>
+                            <td scope="row">@checkoutHistory.CheckedIn</td>
+                            <td scope="row">@checkoutHistory.LibraryCard.Id</td>
+                        </tr>
                         }
                 </tbody>
             </table>

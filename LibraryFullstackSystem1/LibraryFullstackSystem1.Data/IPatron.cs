@@ -9,5 +9,6 @@ namespace LibraryFullstackSystem1.Data
     {
         IEnumerable<Patron> GetAll();
         Patron GetById(int id);
+        Patron GetNameByLibraryId(int libraryId);
     }
 }

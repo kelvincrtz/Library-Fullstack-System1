@@ -29,5 +29,12 @@ namespace LibraryFullstackSystem1.Services
                 .Include(p=>p.HomeLibraryBranch)
                 .FirstOrDefault(p => p.Id == id);
         }
+
+        public Patron GetNameByLibraryId(int libraryId)
+        {
+            return _DbContext.Patrons
+                .Include(p => p.LibraryCard)
+                .FirstOrDefault(p => p.LibraryCard.Id == libraryId);
+        }
     }
 }
