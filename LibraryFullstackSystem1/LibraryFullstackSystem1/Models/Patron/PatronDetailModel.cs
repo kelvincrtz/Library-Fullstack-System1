@@ -15,6 +15,7 @@ namespace LibraryFullstackSystem1.Models.Patron
         public string Telephone { get; set; }
         public string Branch { get; set; }
         public decimal Fee { get; set; }
+        public int LibraryCardId { get; set; }
 
         public IEnumerable<PatronHoldDetailModel> PatronHolds { get; set; }
         public IEnumerable<PatronCheckoutDetailModel> PatronCheckouts { get; set; }

@@ -73,7 +73,8 @@ namespace LibraryFullstackSystem1.Controllers
                 DateOfBirth = patron.DateOfBirth,
                 Fee = patron.LibraryCard.Fees,
                 PatronHolds = currentPatronHold,
-                PatronCheckouts = currentPatronCheckout
+                PatronCheckouts = currentPatronCheckout,
+                LibraryCardId = patron.LibraryCard.Id
             };
 
 

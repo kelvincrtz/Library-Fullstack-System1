@@ -12,11 +12,13 @@ namespace LibraryFullstackSystem1.Controllers
     {
         private readonly ILibraryAsset _ILibraryAsset;
         private readonly ICheckout _ICheckout;
+        private readonly IPatron _IPatron;
 
-        public CatalogController(ILibraryAsset LibraryAsset, ICheckout ICheckout)
+        public CatalogController(ILibraryAsset LibraryAsset, ICheckout ICheckout, IPatron IPatron)
         {
             _ILibraryAsset = LibraryAsset;
             _ICheckout = ICheckout;
+            _IPatron = IPatron;
         }
 
         public IActionResult Index()
@@ -67,7 +69,7 @@ namespace LibraryFullstackSystem1.Controllers
                 CheckoutHistory = _ICheckout.GetCheckoutHistories(id),
                 LatestCheckout = _ICheckout.GetLatestCheckout(id),
                 PatronName = _ICheckout.GetCurrentCheckoutPatron(id),
-                CurrentHolds = currentHolds
+                CurrentHolds = currentHolds,
             };
 
             return View(model);
