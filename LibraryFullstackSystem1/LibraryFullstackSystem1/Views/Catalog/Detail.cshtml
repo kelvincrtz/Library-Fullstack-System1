@@ -87,7 +87,11 @@
                         <tr>
                             <td scope="row">@checkoutHistory.CheckedOut</td>
                             <td scope="row">@checkoutHistory.CheckedIn</td>
-                            <td scope="row">@checkoutHistory.LibraryCard.Id</td>
+                            <td scope="row">
+                                <a asp-controller="Patron" asp-action="Detail" asp-route-id="@checkoutHistory.LibraryCard.Id">
+                                    @checkoutHistory.LibraryCard.Id
+                                </a>
+                            </td>
                         </tr>
                         }
                 </tbody>
@@ -108,7 +112,9 @@
                     {
                     <tr>
                         <td scope="row">@currentHolds.HoldPlaced</td>
-                        <td scope="row">@currentHolds.PatronName</td>
+                        <td scope="row">
+                                @currentHolds.PatronName
+                        </td>
                     </tr>
                     }
                 </tbody>
